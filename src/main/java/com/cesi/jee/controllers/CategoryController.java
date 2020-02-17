@@ -31,10 +31,7 @@ public class CategoryController {
   @GetMapping(path = "/categories/{id}", produces="application/json")
   public ResponseEntity<Category> getOne(@PathVariable(value = "id") Long id) {
     Category categ = categoryRepository.findById(id).orElse(null);
-    if(categ == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    return new ResponseEntity<>(categ, HttpStatus.OK);
+    return categ == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(categ, HttpStatus.OK);
   }
 
   @PostMapping(path = "/categories", consumes = "application/json", produces="application/json")
