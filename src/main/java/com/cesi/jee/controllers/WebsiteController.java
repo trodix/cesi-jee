@@ -31,10 +31,7 @@ public class WebsiteController {
   @GetMapping(path = "/websites/{id}", produces="application/json")
   public ResponseEntity<Website> getOne(@PathVariable(value = "id") Long id) {
     Website website = websiteRepository.findById(id).orElse(null);
-    if(website == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    return new ResponseEntity<>(website, HttpStatus.OK);
+   return website == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(website, HttpStatus.OK);
   }
 
   @GetMapping(path = "/categories/{id}/websites", produces="application/json")
