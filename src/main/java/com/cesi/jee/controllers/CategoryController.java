@@ -3,9 +3,7 @@ package com.cesi.jee.controllers;
 import java.util.List;
 
 import com.cesi.jee.entities.Category;
-import com.cesi.jee.entities.Website;
 import com.cesi.jee.repositories.CategoryRepository;
-import com.cesi.jee.repositories.WebsiteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
