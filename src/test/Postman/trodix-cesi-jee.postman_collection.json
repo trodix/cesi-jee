@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "82cd8d1c-39d5-4d99-873e-c86a3b989bfb",
+		"name": "trodix-cesi-jee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "post category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2aa4e927-0e4c-4750-8c84-3194300b05aa",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Momteacher\",\n\t\"websites\": [\n\t\t\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlApi}}/categories",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2aa4e927-0e4c-4750-8c84-3194300b05aa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Momteacher updated\",\n\t\"websites\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlApi}}/categories/3",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d7f9d80-b5d6-4bae-8e50-d6123755aa35",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/categories",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d7f9d80-b5d6-4bae-8e50-d6123755aa35",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/categories/2",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete one category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d7f9d80-b5d6-4bae-8e50-d6123755aa35",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/categories/2",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Website",
+			"item": [
+				{
+					"name": "get all websites",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cbdd9e9e-35ec-4635-a174-44b80abee20b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/websites",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"websites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one website",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83113cf2-e5c8-46ac-af4c-53a1246a5c8b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/websites/1",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"websites",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all websites by category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f2e1421d-80cd-470c-bf00-a21ffe40e064",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/categories/3/websites",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"categories",
+								"3",
+								"websites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post a website",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8970dd89-2c18-45c4-a525-b8a71d8d4c56",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"trodix\",\n\t\"url\": \"http://trodix.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlApi}}/websites",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"websites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put a website",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"trodix updated\",\n\t\"url\": \"http://trodix.com\",\n\t\"category\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlApi}}/websites/6",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"websites",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a website",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce01f364-acac-4082-9208-099ab0e72b93",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlApi}}/websites/5",
+							"host": [
+								"{{urlApi}}"
+							],
+							"path": [
+								"websites",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
