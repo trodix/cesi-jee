@@ -25,9 +25,6 @@ public class CategoryController {
   @Autowired
   private CategoryRepository categoryRepository;
 
-  @Autowired
-  private WebsiteRepository websiteRepository;
-
   @GetMapping("/categories")
   public List<Category> getAll() {
     return categoryRepository.findAll();
@@ -64,14 +61,5 @@ public class CategoryController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-  }
-
-  @GetMapping(path = "/categories/{id}/websites", produces="application/json")
-  public ResponseEntity<List<Website>> getOneByCategory(@PathVariable(value = "id") Long id) {
-    List<Website> websites = websiteRepository.findByCategoryId(id);
-    if(websites.size() == 0) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    return new ResponseEntity<>(websites, HttpStatus.OK);
   }
 }

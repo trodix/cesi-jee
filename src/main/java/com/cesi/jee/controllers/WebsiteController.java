@@ -37,6 +37,15 @@ public class WebsiteController {
     return new ResponseEntity<>(website, HttpStatus.OK);
   }
 
+  @GetMapping(path = "/categories/{id}/websites", produces="application/json")
+  public ResponseEntity<List<Website>> getOneByCategory(@PathVariable(value = "id") Long id) {
+    List<Website> websites = websiteRepository.findByCategoryId(id);
+    if(websites.size() == 0) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<>(websites, HttpStatus.OK);
+  }
+
   @PostMapping(path = "/websites", consumes = "application/json", produces="application/json")
   public ResponseEntity<Website> post(@RequestBody Website website) {
     website = websiteRepository.saveAndFlush(website);
