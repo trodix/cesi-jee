@@ -20,50 +20,49 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WebsiteController {
 
-  @Autowired
-  private WebsiteRepository websiteRepository;
+    @Autowired
+    private WebsiteRepository websiteRepository;
 
-  @GetMapping("/websites")
-  public List<Website> getAll() {
-    return websiteRepository.findAll();
-  }
+    @GetMapping("/websites")
+    public List<Website> getAll() {
+        return websiteRepository.findAll();
+    }
 
   @GetMapping(path = "/websites/{id}", produces="application/json")
-  public ResponseEntity<Website> getOne(@PathVariable(value = "id") Long id) {
-    Website website = websiteRepository.findById(id).orElse(null);
-   return website == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(website, HttpStatus.OK);
-  }
+    public ResponseEntity<Website> getOne(@PathVariable(value = "id") Long id) {
+        Website website = websiteRepository.findById(id).orElse(null);
+        return website == null ?
+                new ResponseEntity<>(HttpStatus.NOT_FOUND) :
+                new ResponseEntity<>(website, HttpStatus.OK);
+    }
 
   @GetMapping(path = "/categories/{id}/websites", produces="application/json")
-  public ResponseEntity<List<Website>> getOneByCategory(@PathVariable(value = "id") Long id) {
-    List<Website> websites = websiteRepository.findByCategoryId(id);
-    if(websites.size() == 0) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<List<Website>> getOneByCategory(@PathVariable(value = "id") Long id) {
+        List<Website> websites = websiteRepository.findByCategoryId(id);
+        return (websites.size() == 0) ?
+                new ResponseEntity<>(HttpStatus.NOT_FOUND) :
+                new ResponseEntity<>(websites, HttpStatus.OK);
     }
-    return new ResponseEntity<>(websites, HttpStatus.OK);
-  }
 
   @PostMapping(path = "/websites", consumes = "application/json", produces="application/json")
-  public ResponseEntity<Website> post(@RequestBody Website website) {
-    website = websiteRepository.saveAndFlush(website);
-
-    return new ResponseEntity<>(website, HttpStatus.CREATED);
-  }
+    public ResponseEntity<Website> post(@RequestBody Website website) {
+        website = websiteRepository.saveAndFlush(website);
+        return new ResponseEntity<>(website, HttpStatus.CREATED);
+    }
 
   @PutMapping(path = "/websites/{id}", consumes = "application/json", produces="application/json")
-  public ResponseEntity<Website> put(@RequestBody Website website) {
-    website = websiteRepository.saveAndFlush(website);
-
-    return new ResponseEntity<>(website, HttpStatus.OK);
-  }
+    public ResponseEntity<Website> put(@RequestBody Website website) {
+        website = websiteRepository.saveAndFlush(website);
+        return new ResponseEntity<>(website, HttpStatus.OK);
+    }
 
   @DeleteMapping(path = "/websites/{id}", produces="application/json")
-  public ResponseEntity<Website> delete(@PathVariable(value = "id") Long id) {
-    try {
-      websiteRepository.deleteById(id);
-    } catch (EmptyResultDataAccessException e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Website> delete(@PathVariable(value = "id") Long id) {
+        try {
+            websiteRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-  }
 }
